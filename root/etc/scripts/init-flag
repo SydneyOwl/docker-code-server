@@ -1,0 +1,1 @@
+if this file exists in /etc/scripts, it means script "init-code" is not being executed yet.

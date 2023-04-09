@@ -1,6 +1,6 @@
 This is a modified version of linux-server which removed support of s6-overlay and use debian as base image. See https://github.com/linuxserver/docker-code-server for more detail.
 
-Armhf is no longer supported in this owl image.
+Armhf is no supported in this owl image right now.
 
 This image is designed updateable so you won't lost your environment manually installed in the container. The updater is not released since it is still unstable. 
 

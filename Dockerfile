@@ -2,7 +2,7 @@ FROM debian:11
 
 # set version label
 ARG CODE_RELEASE
-ARG TARGETARCH
+ARG TARGETARCH=amd64
 LABEL maintainer="MrOwl"
 
 # environment settings

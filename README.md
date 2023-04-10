@@ -1,6 +1,6 @@
 This is a modified version of linux-server which removed support of s6-overlay and use debian as base image. See https://github.com/linuxserver/docker-code-server for more detail.
 
-Armhf is no supported in this owl image right now.
+Armhf is no supported in this image right now.
 
 This image is designed updateable so you won't lost your environment manually installed in the container. The updater is not released since it is still unstable. 
 
@@ -36,7 +36,7 @@ services:
       - SUDO_PASSWORD_HASH= #optional
       - PROXY_DOMAIN=code-server.my.domain #optional
       - DEFAULT_WORKSPACE=/config/workspace #optional
-      # - SKIP_INIT=1 # Debug only. Do not use it
+      - SKIP_INIT= # Debug only.
     volumes:
       - /path/to/appdata/config:/config
       - code-app:/app
@@ -58,7 +58,7 @@ docker run -d \
   -e SUDO_PASSWORD_HASH= `#optional` \
   -e PROXY_DOMAIN=code-server.my.domain `#optional` \
   -e DEFAULT_WORKSPACE=/config/workspace `#optional` \
-  # -e SKIP_INIT=1 # Debug only. Do not use it \
+  -e SKIP_INIT= `# Debug only.` \
   -p 8443:8443 \
   -v /path/to/appdata/config:/config \
   -v code-app:/app
@@ -73,7 +73,7 @@ Here's the explainations of the args ccording to linux-server's readme:
 | `-e PUID=1000` | for UserID - see below for explanation |
 | `-e PGID=1000` | for GroupID - see below for explanation |
 | `-e TZ=Etc/UTC` | specify a timezone to use, see this [list](https://en.wikipedia.org/wiki/List_of_tz_database_time_zones#List). |
-| `-e SKIP_INIT=1` | Skip initializing the container. This is for debug usage only! |
+| `-e SKIP_INIT=` | Set to 1 to Skip initializing the container. This is for debug usage only! |
 | `-e PASSWORD=password` | Optional web gui password, if `PASSWORD` or `HASHED_PASSWORD` is not provided, there will be no auth. |
 | `-e HASHED_PASSWORD=` | Optional web gui password, overrides `PASSWORD`, instructions on how to create it is below. |
 | `-e SUDO_PASSWORD=password` | If this optional variable is set, user will have sudo access in the code-server terminal with the specified password. |

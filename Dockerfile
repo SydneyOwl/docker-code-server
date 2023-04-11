@@ -2,14 +2,21 @@ FROM debian:11
 
 # set version label
 ARG CODE_RELEASE
-ARG TARGETARCH=amd64
+ARG GO_RELEASE
+
+ARG TARGETARCH
 LABEL maintainer="MrOwl"
 
 # environment settings
 ARG DEBIAN_FRONTEND="noninteractive"
 ENV HOME="/config"
-
+COPY go.tar.gz /tmp
 RUN \
+  echo ${TARGETARCH} && \
+  case ${TARGETARCH} in \
+  "arm") TARGETARCH=armv7l && GOARCH=src ;; \
+  *) GOARCH="linux-"$TARGETARCH ;; \
+  esac && \
   echo "**** install runtime dependencies ****" && \
   apt-get update && \
   apt-get install -y \
@@ -21,12 +28,12 @@ RUN \
     netcat \
     sudo \
     curl \
-    wget \
+    wget \ 
     tar && \
   echo "**** install code-server ****" && \
   if [ -z ${CODE_RELEASE+x} ]; then \
-    CODE_RELEASE=$(curl -sX GET https://api.github.com/repos/coder/code-server/releases/latest \
-      | awk '/tag_name/{print $4;exit}' FS='[""]' | sed 's|^v||'); \
+  CODE_RELEASE=$(curl -sX GET https://api.github.com/repos/coder/code-server/releases/latest \
+    | awk '/tag_name/{print $4;exit}' FS='[""]' | sed 's|^v||'); \
   fi && \
   mkdir -p /app/code-server && \
   curl -o \
@@ -35,8 +42,14 @@ RUN \
   tar xf /tmp/code-server.tar.gz -C \
     /app/code-server --strip-components=1 && \
   echo "*** installing golang ***" && \
-  wget https://golang.google.cn/dl/go1.18.9.linux-${TARGETARCH}.tar.gz -O /tmp/go1.18.tar.gz && \
-  tar -C /usr/local -zxvf /tmp/go1.18.tar.gz && \
+  if [ -z ${GO_RELEASE+x} ]; then \
+    GO_RELEASE=$(curl -sX GET https://go.dev/VERSION?m=text); \
+  fi && \
+  if [ ${GOARCH} != "src" ];then \
+    rm -rf /tmp/go.tar.gz && \
+    curl -o /tmp/go.tar.gz -L https://go.dev/dl/${GO_RELEASE}.${GOARCH}.tar.gz ; \
+  fi && \
+  tar -C /usr/local -zxf /tmp/go.tar.gz && \
   echo "export PATH=$PATH:/usr/local/go/bin" >> /etc/profile && \
   /app/code-server/bin/code-server --install-extension golang.Go && \
   echo "**** clean up ****" && \

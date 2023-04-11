@@ -1,17 +1,26 @@
 This is a modified version of linux-server which removed support of s6-overlay and use debian as base image. See https://github.com/linuxserver/docker-code-server for more detail.
 
-Armhf is no supported in this image right now.
+Only amd64/arm64/armv7 are supported; arm64/armv7 images are not being tested.
 
 This image is designed updateable so you won't lost your environment manually installed in the container. The updater is not released since it is still unstable. 
 
-~~Python3.8 and~~Go1.18 environment and their vscode plugins are integrated in this image as well..
+~~Python3.8 and~~The CI runs each 10 minutes. It pulls latest codee-server automatically and builds image. And golang and their vscode plugins are integrated in this image as well.
+
+**warning:golang in armhf is compiled through `GOROOT_FINAL=/usr/local GOOS=linux GOARCH=arm GOARM=7 GOBIN="/home/abc/go/bin" ./make.bash` from source and may not be compatible. See .github/scripts/compile_go.sh for more!!**
 
 **THIS IS STILL A DRAFT AND IS NOT RECOMMANDED TO USE.**
 
 ## Build
-If you want to pull and run image prebuild, just ignore this section
+If you want to pull and run image prebuilt, just ignore this section
 
-To build the image, use `docker build --pull --no-cache -t sydneymrcat/code-server .` This builds amd64 image by default!
+To build the image：
+
+```
+docker build --pull --no-cache \
+--build-arg CODE_RELEASE=`#optional` \
+--build-arg GO_RELEASE=`#optional` \
+-t sydneymrcat/code-server .
+```
 
 ## Run
 First, Create a volume to put code-server base application: `docker volume create code-app`. This volume will be mounted to the updater container.
@@ -81,3 +90,8 @@ Here's the explainations of the args ccording to linux-server's readme:
 | `-e PROXY_DOMAIN=code-server.my.domain` | If this optional variable is set, this domain will be proxied for subdomain proxying. See [Documentation](https://github.com/cdr/code-server/blob/master/docs/FAQ.md#sub-domains) |
 | `-e DEFAULT_WORKSPACE=/config/workspace` | If this optional variable is set, code-server will open this directory by default |
 | `-v /config` | Contains all relevant configuration files. |
+## Environment
+### Go
+install@/usr/local/go
+
+GOBIN: /home/abc/go/bin

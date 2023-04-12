@@ -1,11 +1,10 @@
 #!/bin/bash
-mkdir -p /config/{extensions,data,workspace,.ssh}
+echo "adding abc"
+useradd -m -s /bin/bash abc
+# rm -rf ~/.config/
+cp /root/.bashrc /home/abc/.bashrc #add path
 if [ -n "${SUDO_PASSWORD}" ] || [ -n "${SUDO_PASSWORD_HASH}" ]; then
     echo "setting up sudo access"
-    if ! grep -q 'abc' /etc/passwd; then
-        echo "adding abc"
-        useradd -m abc
-    fi
     if ! grep -q 'abc' /etc/sudoers; then
         echo "adding abc to sudoers"
         echo "abc ALL=(ALL:ALL) ALL" >> /etc/sudoers

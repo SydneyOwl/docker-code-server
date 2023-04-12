@@ -48,8 +48,9 @@ RUN \
     curl -o /tmp/go.tar.gz -L https://go.dev/dl/${GO_RELEASE}.${GOARCH}.tar.gz ; \
   fi && \
   tar -C /usr/local -zxf /tmp/go.tar.gz && \
-  echo "export PATH=$PATH:/usr/local/go/bin" >> /etc/profile && \
-  /app/code-server/bin/code-server --install-extension golang.Go && \
+  echo "export PATH=$PATH:/usr/local/go/bin" >> /root/.bashrc && \
+  mkdir -p /config/{extensions,data,workspace,.ssh} && \
+  /app/code-server/bin/code-server --extensions-dir /config/extensions --install-extension golang.Go && \
   echo "**** clean up ****" && \
   apt-get clean && \
   rm -rf \

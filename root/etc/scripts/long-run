@@ -12,7 +12,7 @@ else
     PROXY_DOMAIN_ARG="--proxy-domain=${PROXY_DOMAIN}"
 fi
 
-su - abc -s /bin/bash -c "/app/code-server/bin/code-server \
+su abc -s /bin/bash -c "/app/code-server/bin/code-server \
             --bind-addr 0.0.0.0:8443 \
             --user-data-dir /config/data \
             --extensions-dir /config/extensions \

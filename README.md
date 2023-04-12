@@ -77,7 +77,7 @@ docker run -d \
   -e SKIP_INIT= `# Debug only.` \
   -p 8443:8443 \
   -v /path/to/appdata/config:/config \
-  -v code_app:/app
+  -v code_app:/app \
   --restart unless-stopped \
   sydneymrcat/code-server:latest
 ```
@@ -86,8 +86,8 @@ Here are the parameter descriptions:
 | Parameter | Function |
 | :----: | --- |
 | `-p 8443` | web gui |
-| `-e PUID=1000` | for UserID - see below for explanation |
-| `-e PGID=1000` | for GroupID - see below for explanation |
+| `-e PUID=1000` | for UserID - not supported yet |
+| `-e PGID=1000` | for GroupID - not supported yet  |
 | `-e TZ=Etc/UTC` | specify a timezone to use, see this [list](https://en.wikipedia.org/wiki/List_of_tz_database_time_zones#List). |
 | `-e SKIP_INIT=` | Set to 1 to Skip initializing the container. This is for debug usage only! |
 | `-e PASSWORD=password` | Optional web gui password, if `PASSWORD` or `HASHED_PASSWORD` is not provided, there will be no auth. |
@@ -105,6 +105,8 @@ GOBIN: `/home/abc/go/bin`
 
 ## Version log
 
-v0.1.1: Integrated go1.20.3 and code4.11.
+v0.1.2: Bug fix: Path invalid.
 
-v0.1.0: Integrated go1.18 and code4.11. Armhf is not supportd in this version
+v0.1.1: Integrated go1.20.3 and code4.11. Not Rcommanded to use 
+
+v0.1.0: Integrated go1.18 and code4.11.  Not Rcommanded to use. Armhf is not supportd in this version

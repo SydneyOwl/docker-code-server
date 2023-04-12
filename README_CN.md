@@ -74,7 +74,7 @@ docker run -d \
   -e SKIP_INIT= `# Debug only.` \
   -p 8443:8443 \
   -v /path/to/appdata/config:/config \
-  -v code_app:/app
+  -v code_app:/app \
   --restart unless-stopped \
   sydneymrcat/code-server:latest
 ```
@@ -84,8 +84,8 @@ docker run -d \
 |                   参数                   | 功能                                                         |
 | :--------------------------------------: | ------------------------------------------------------------ |
 |                `-p 8443`                 | 网页界面端口                                                 |
-|              `-e PUID=1000`              | 用户ID                                                       |
-|              `-e PGID=1000`              | 用户组ID                                                     |
+|              `-e PUID=1000`              | 用户ID,未支持                                                       |
+|              `-e PGID=1000`              | 用户组ID,未支持                                                     |
 |             `-e TZ=Etc/UTC`              | 指定要使用的时区，参考[时区列表](https://en.wikipedia.org/wiki/List_of_tz_database_time_zones#List)。 |
 |             `-e SKIP_INIT=`              | 设置为1以跳过初始化容器。仅用于调试！                        |
 |          `-e PASSWORD=password`          | 可选的网页界面密码，如果未提供`PASSWORD`或`HASHED_PASSWORD`，则不需要认证。 |
@@ -106,6 +106,8 @@ GOBIN: `/home/abc/go/bin`
 
 ## 版本日志
 
-v0.1.1：集成go1.20.3以及code4.11
+v0.1.2: 修复PATH无效的bug
 
-v0.1.0：集成go1.18以及code4.11. ARMHF在该版本未受支持
+v0.1.1：集成go1.20.3以及code4.11，不建议使用
+
+v0.1.0：集成go1.18以及code4.11. ARMHF在该版本未受支持，不建议使用

@@ -12,7 +12,6 @@ ARG DEBIAN_FRONTEND="noninteractive"
 ENV HOME="/config"
 COPY go.tar.gz /tmp
 RUN \
-  echo ${TARGETARCH} && \
   case ${TARGETARCH} in \
   "arm") TARGETARCH=armv7l && GOARCH=src ;; \
   *) GOARCH="linux-"$TARGETARCH ;; \
@@ -28,7 +27,6 @@ RUN \
     netcat \
     sudo \
     curl \
-    wget \ 
     tar && \
   echo "**** install code-server ****" && \
   if [ -z ${CODE_RELEASE+x} ]; then \

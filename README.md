@@ -107,8 +107,10 @@ GOBIN: `/home/abc/go/bin`
 
 ## Version log
 
-v0.1.2: Bug fix: Path invalid.
+v0.1.3: Bug fix: Cannot chown. Integrated go1.20.3 and code4.11.
 
-v0.1.1: Integrated go1.20.3 and code4.11. Not Rcommanded to use 
+v0.1.2: Not Rcommanded to use - alpha version
 
-v0.1.0: Integrated go1.18 and code4.11.  Not Rcommanded to use. Armhf is not supportd in this version
+v0.1.1: Not Rcommanded to use - alpha version
+
+v0.1.0: Not Rcommanded to use - alpha version

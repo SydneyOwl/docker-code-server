@@ -54,7 +54,6 @@ RUN \
   echo "**** clean up ****" && \
   apt-get clean && \
   rm -rf \
-    /config/* \
     /tmp/* \
     /var/lib/apt/lists/* \
     /var/tmp/*

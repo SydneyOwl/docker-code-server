@@ -1,6 +1,7 @@
 #!/bin/bash
 echo "adding abc"
-useradd -m -s /bin/bash abc
+groupadd -g $PGID abc
+useradd -m -s /bin/bash -u $PUID -g $PGID abc
 # rm -rf ~/.config/
 cp /root/.bashrc /home/abc/.bashrc #add path
 if [ -n "${SUDO_PASSWORD}" ] || [ -n "${SUDO_PASSWORD_HASH}" ]; then

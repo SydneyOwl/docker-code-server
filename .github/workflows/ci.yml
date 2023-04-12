@@ -3,7 +3,7 @@ name: Deploy with docker
 on:
   push:
     # 分支
-    branches: [ master ] 
+    # branches: [ master ] 
     tags: [ v* ]
 
 permissions:
@@ -23,9 +23,6 @@ jobs:
         id: go_version
         run: echo ::set-output name=VERSION::$(curl -sX GET https://go.dev/VERSION?m=text)
 
-      - name: Get go version in release
-        id: go_release_version
-        run: echo ::set-output name=VERSION::CODE_RELEASE=$(curl -sX GET https://api.github.com/repos/sydneyowl/docker-code-server/releases/latest | awk '/tag_name/{print $4;exit}' FS='[""]' | sed 's|^v||')
 
       - name: Build Latest armhf dist
         run: |
@@ -35,7 +32,6 @@ jobs:
 
       - name: Create Release and Upload Release Asset
         uses: softprops/action-gh-release@v1
-        if: ${{ steps.go_version.outputs.VERSION != steps.go_release_version.outputs.VERSION }}
         with:
           tag_name: ${{ steps.go_version.outputs.VERSION }}
           name: ${{ steps.go_version.outputs.VERSION }}.linux-armv7l.tar.gz

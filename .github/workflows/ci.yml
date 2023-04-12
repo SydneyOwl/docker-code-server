@@ -6,6 +6,9 @@ on:
     branches: [ master ] 
     tags: [ v* ]
 
+permissions:
+  contents: write
+
 jobs:
   compile_env:
     runs-on: ubuntu-latest
@@ -20,6 +23,10 @@ jobs:
         id: go_version
         run: echo ::set-output name=VERSION::$(curl -sX GET https://go.dev/VERSION?m=text)
 
+      - name: Get go version in release
+        id: go_release_version
+        run: echo ::set-output name=VERSION::CODE_RELEASE=$(curl -sX GET https://api.github.com/repos/sydneyowl/docker-code-server/releases/latest | awk '/tag_name/{print $4;exit}' FS='[""]' | sed 's|^v||')
+
       - name: Build Latest armhf dist
         run: |
           chmod +x .github/workflows/scripts/compile/armhf_go.sh
@@ -28,8 +35,9 @@ jobs:
 
       - name: Create Release and Upload Release Asset
         uses: softprops/action-gh-release@v1
+        if: ${{ steps.go_version.outputs.VERSION != steps.go_release_version.outputs.VERSION }}
         with:
-          tag_name: ${{ github.ref }}
+          tag_name: ${{ steps.go_version.outputs.VERSION }}
           name: go${{ steps.go_version.outputs.VERSION }}.linux-armv7l.tar.gz
           body: Complied armhf Golang${{ steps.go_version.outputs.VERSION }} dist.
           draft: false

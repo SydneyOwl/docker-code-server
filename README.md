@@ -9,6 +9,8 @@ Only amd64/arm64/armv7 are supported; And arm64/armv7 images are not being teste
 
 This image is designed to be upgradeable (upgrading will not lose the environment already installed in the container). The upgrade tool is still being developed and has not yet been launched.
 
+This image embeds Golang and its environment. The Go version is the version at the time of the push.For details, please refer to the [version log](#Version log).
+
 Every ten minutes, CI automatically checks whether there are stable updates available for code-server and Golang. If there are, it will automatically pull and build a new image. Therefore, the image pulled from sydneymrcat/code-server always has the latest versions of code-server and Go.
 
 **warning:golang in armhf is compiled through `GOROOT_FINAL=/usr/local GOOS=linux GOARCH=arm GOARM=7 GOBIN="/home/abc/go/bin" ./make.bash` from source and may not be compatible. See .github/scripts/compile_go.sh for more!!**
@@ -95,8 +97,14 @@ Here are the parameter descriptions:
 | `-e PROXY_DOMAIN=code-server.my.domain` | If this optional variable is set, this domain will be proxied for subdomain proxying. See [Documentation](https://github.com/cdr/code-server/blob/master/docs/FAQ.md#sub-domains) |
 | `-e DEFAULT_WORKSPACE=/config/workspace` | If this optional variable is set, code-server will open this directory by default |
 | `-v /config` | Contains all relevant configuration files. |
-## The default installed environment
+## Default installed environment
 ### Go and vscode plugin
  location:`/usr/local/go`
 
 GOBIN: `/home/abc/go/bin`
+
+## Version log
+
+v0.1.1: Integrated go1.20.3 and code4.11.
+
+v0.1.0: Integrated go1.18 and code4.11. Armhf is not supportd in this version

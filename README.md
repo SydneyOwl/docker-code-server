@@ -20,6 +20,8 @@ Every ten minutes, CI automatically checks whether there are stable updates avai
 ## Build
 If you want to directly pull the built image, you can skip this section.
 
+If you need to build an armv7l image, you need to download the compiled golang dist from release and replace the go.tar.gz in the repository
+
 To build the image：
 
 ```

@@ -1,6 +1,6 @@
 # README
 
-![GitHub Workflow Status (with branch)](https://img.shields.io/github/actions/workflow/status/SydneyOwl/docker-code-server/ci.yml?style=for-the-badge)![Docker Pulls](https://img.shields.io/docker/pulls/sydneymrcat/code-server?style=for-the-badge)![GitHub](https://img.shields.io/github/license/sydneyowl/docker-code-server?style=for-the-badge)
+![GitHub Workflow Status (with branch)](https://img.shields.io/github/actions/workflow/status/SydneyOwl/docker-code-server/ci.yml?style=for-the-badge) ![Docker Pulls](https://img.shields.io/docker/pulls/sydneymrcat/code-server?style=for-the-badge) ![GitHub](https://img.shields.io/github/license/sydneyowl/docker-code-server?style=for-the-badge)
 
 这是 [linux-server](https://github.com/linuxserver/docker-code-server) 的修改版本，已删除对 s6-overlay 的支持，并以 debian 为基础镜像。
 
@@ -8,7 +8,7 @@
 
 这个镜像被设计为可升级，即升级后不会失去已安装在容器中的环境。升级工具还在编写中，尚未上线！
 
-该镜像内嵌golang及其环境。golang版本为推送时的版本，详情请查看 [版本日志](#版本日志)
+该镜像内嵌go以及go的vscode插件。golang版本为推送时的版本，详情请查看 [版本日志](#版本日志)
 
 **警告：armhf 上的 Golang 是通过 `GOROOT_FINAL=/usr/local GOOS=linux GOARCH=arm GOARM=7 GOBIN="/home/abc/go/bin" ./make.bash` 从源代码编译而来，可能不兼容。请参见 .github/scripts/compile_go.sh 获取更多信息！**
 

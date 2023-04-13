@@ -1,6 +1,6 @@
 # README
 
-![GitHub Workflow Status (with branch)](https://img.shields.io/github/actions/workflow/status/SydneyOwl/docker-code-server/ci.yml?style=for-the-badge)![Docker Pulls](https://img.shields.io/docker/pulls/sydneymrcat/code-server?style=for-the-badge)![GitHub](https://img.shields.io/github/license/sydneyowl/docker-code-server?style=for-the-badge)
+![GitHub Workflow Status (with branch)](https://img.shields.io/github/actions/workflow/status/SydneyOwl/docker-code-server/ci.yml?style=for-the-badge) ![Docker Pulls](https://img.shields.io/docker/pulls/sydneymrcat/code-server?style=for-the-badge) ![GitHub](https://img.shields.io/github/license/sydneyowl/docker-code-server?style=for-the-badge)
 
 [中文文档](./README_CN.md)
 
@@ -11,7 +11,7 @@ Only amd64/arm64/armv7 are supported; And arm64/armv7 images are not being teste
 
 This image is designed to be upgradeable (upgrading will not lose the environment already installed in the container). The upgrade tool is still being developed and has not yet been launched.
 
-This image embeds Golang and its environment. The Go version is the version at the time of the push.For details, please refer to the [version log](#Version log).
+This image embeds Golang and go vscode plugins. The Go version is the version at the time of the push. For details, please refer to the [version log](#VersionLog).
 
 **warning:golang in armhf is compiled through `GOROOT_FINAL=/usr/local GOOS=linux GOARCH=arm GOARM=7 GOBIN="/home/abc/go/bin" ./make.bash` from source and may not be compatible. See .github/scripts/compile_go.sh for more!!**
 
@@ -105,7 +105,7 @@ Here are the parameter descriptions:
 
 GOBIN: `/home/abc/go/bin`
 
-## Version log
+## VersionLog
 
 v0.2.0-beta: Bug fix: Cannot create necessary directories. Integrated go1.20.3 and code4.11.
 

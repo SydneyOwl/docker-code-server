@@ -1,7 +1,9 @@
 #!/bin/bash
-echo "adding abc"
-groupadd -g $PGID abc
-useradd -m -s /bin/bash -u $PUID -g $PGID abc
+echo "Changing uid and gid"
+if [ -n "${PGID}" ] && [ -n "${PUID}" ]; then
+    groupadd -g $PGID abc
+    useradd -m -s /bin/bash -u $PUID -g $PGID abc
+fi
 # rm -rf ~/.config/
 cp /root/.bashrc /home/abc/.bashrc #add path
 if [ -n "${SUDO_PASSWORD}" ] || [ -n "${SUDO_PASSWORD_HASH}" ]; then

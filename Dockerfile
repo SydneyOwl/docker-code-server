@@ -49,7 +49,7 @@ RUN \
   fi && \
   tar -C /usr/local -zxf /tmp/go.tar.gz && \
   echo "export PATH=$PATH:/usr/local/go/bin" >> /root/.bashrc && \
-  mkdir -p /config/{extensions,data,workspace,.ssh} && \
+  mkdir -p /config/extensions /config/data /config/workspace /config/.ssh && \
   /app/code-server/bin/code-server --extensions-dir /config/extensions --install-extension golang.Go && \
   echo "**** clean up ****" && \
   apt-get clean && \

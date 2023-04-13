@@ -1,5 +1,7 @@
 # README
 
+![GitHub Workflow Status (with branch)](https://img.shields.io/github/actions/workflow/status/SydneyOwl/docker-code-server/ci.yml?style=for-the-badge)![Docker Pulls](https://img.shields.io/docker/pulls/sydneymrcat/code-server?style=for-the-badge)![GitHub](https://img.shields.io/github/license/sydneyowl/docker-code-server?style=for-the-badge)
+
 这是 [linux-server](https://github.com/linuxserver/docker-code-server) 的修改版本，已删除对 s6-overlay 的支持，并以 debian 为基础镜像。
 
 目前仅支持 在amd64/arm64/armv7架构上运行；并且 arm64/armv7 镜像没有经过测试。
@@ -86,12 +88,12 @@ docker run -d \
 |                   参数                   | 功能                                                         |
 | :--------------------------------------: | ------------------------------------------------------------ |
 |                `-p 8443`                 | 网页界面端口                                                 |
-|              `-e PUID=1000`              | 用户ID,未支持                                                       |
-|              `-e PGID=1000`              | 用户组ID,未支持                                                     |
+|              `-e PUID=1000`              | 用户ID                                             |
+|              `-e PGID=1000`              | 用户组ID                                             |
 |             `-e TZ=Etc/UTC`              | 指定要使用的时区，参考[时区列表](https://en.wikipedia.org/wiki/List_of_tz_database_time_zones#List)。 |
 |             `-e SKIP_INIT=`              | 设置为1以跳过初始化容器。仅用于调试！                        |
 |          `-e PASSWORD=password`          | 可选的网页界面密码，如果未提供`PASSWORD`或`HASHED_PASSWORD`，则不需要认证。 |
-|          `-e HASHED_PASSWORD=`           | 可选的网页界面密码，覆盖`PASSWORD`，下面将介绍如何创建密码哈希值。 |
+|          `-e HASHED_PASSWORD=`           | 可选的网页界面密码，覆盖`PASSWORD`。                         |
 |       `-e SUDO_PASSWORD=password`        | 如果设置了此可选变量，则用户将具有终端中sudo访问权限，密码为指定的密码。 |
 |         `-e SUDO_PASSWORD_HASH=`         | 可选地通过哈希设置sudo密码（优先于`SUDO_PASSWORD`变量）。格式为`$type$salt$hashed`。 |
 | `-e PROXY_DOMAIN=code-server.my.domain`  | 如果设置了此可选变量，则此域将被代理进行子域代理。参见[文档](https://github.com/cdr/code-server/blob/master/docs/FAQ.md#sub-domains) |
@@ -108,10 +110,8 @@ GOBIN: `/home/abc/go/bin`
 
 ## 版本日志
 
-v0.1.3: 修复无法更改权限的问题。集成go1.20.3以及code4.11
+v0.2.0-beta: 修复无法创建必要文件夹的问题。集成go1.20.3以及code4.11
 
-v0.1.2: 不建议使用 - 测试版本
+v0.2.0-alpha: 修复无法更改权限的问题。集成go1.20.3以及code4.11。 **不建议使用**
 
-v0.1.1：不建议使用 - 测试版本
-
-v0.1.0：不建议使用 - 测试版本
+v0.1.x: 不建议使用 - 测试版本

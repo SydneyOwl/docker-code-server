@@ -1,5 +1,7 @@
 # README
 
+![GitHub Workflow Status (with branch)](https://img.shields.io/github/actions/workflow/status/SydneyOwl/docker-code-server/ci.yml?style=for-the-badge)![Docker Pulls](https://img.shields.io/docker/pulls/sydneymrcat/code-server?style=for-the-badge)![GitHub](https://img.shields.io/github/license/sydneyowl/docker-code-server?style=for-the-badge)
+
 [中文文档](./README_CN.md)
 
 
@@ -10,8 +12,6 @@ Only amd64/arm64/armv7 are supported; And arm64/armv7 images are not being teste
 This image is designed to be upgradeable (upgrading will not lose the environment already installed in the container). The upgrade tool is still being developed and has not yet been launched.
 
 This image embeds Golang and its environment. The Go version is the version at the time of the push.For details, please refer to the [version log](#Version log).
-
-Every ten minutes, CI automatically checks whether there are stable updates available for code-server and Golang. If there are, it will automatically pull and build a new image. Therefore, the image pulled from sydneymrcat/code-server always has the latest versions of code-server and Go.
 
 **warning:golang in armhf is compiled through `GOROOT_FINAL=/usr/local GOOS=linux GOARCH=arm GOARM=7 GOBIN="/home/abc/go/bin" ./make.bash` from source and may not be compatible. See .github/scripts/compile_go.sh for more!!**
 
@@ -88,12 +88,12 @@ Here are the parameter descriptions:
 | Parameter | Function |
 | :----: | --- |
 | `-p 8443` | web gui |
-| `-e PUID=1000` | for UserID - not supported yet |
-| `-e PGID=1000` | for GroupID - not supported yet  |
+| `-e PUID=1000` | for UserID |
+| `-e PGID=1000` | for GroupID |
 | `-e TZ=Etc/UTC` | specify a timezone to use, see this [list](https://en.wikipedia.org/wiki/List_of_tz_database_time_zones#List). |
 | `-e SKIP_INIT=` | Set to 1 to Skip initializing the container. This is for debug usage only! |
 | `-e PASSWORD=password` | Optional web gui password, if `PASSWORD` or `HASHED_PASSWORD` is not provided, there will be no auth. |
-| `-e HASHED_PASSWORD=` | Optional web gui password, overrides `PASSWORD`, instructions on how to create it is below. |
+| `-e HASHED_PASSWORD=` | Optional web gui password, overrides `PASSWORD`. |
 | `-e SUDO_PASSWORD=password` | If this optional variable is set, user will have sudo access in the code-server terminal with the specified password. |
 | `-e SUDO_PASSWORD_HASH=` | Optionally set sudo password via hash (takes priority over `SUDO_PASSWORD` var). Format is `$type$salt$hashed`. |
 | `-e PROXY_DOMAIN=code-server.my.domain` | If this optional variable is set, this domain will be proxied for subdomain proxying. See [Documentation](https://github.com/cdr/code-server/blob/master/docs/FAQ.md#sub-domains) |
@@ -107,10 +107,8 @@ GOBIN: `/home/abc/go/bin`
 
 ## Version log
 
-v0.1.3: Bug fix: Cannot chown. Integrated go1.20.3 and code4.11.
+v0.2.0-beta: Bug fix: Cannot create necessary directories. Integrated go1.20.3 and code4.11.
 
-v0.1.2: Not Rcommanded to use - alpha version
+v0.2.0-alpha: Bug fix: Cannot chown. Integrated go1.20.3 and code4.11. **Not Rcommanded to use.**
 
-v0.1.1: Not Rcommanded to use - alpha version
-
-v0.1.0: Not Rcommanded to use - alpha version
+v0.1.x: Not Rcommanded to use.

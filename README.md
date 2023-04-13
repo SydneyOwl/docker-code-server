@@ -107,6 +107,8 @@ GOBIN: `/home/abc/go/bin`
 
 ## VersionLog
 
+v0.2.0: Integrated go1.20.3 and code4.11.
+
 v0.2.0-beta: Bug fix: Cannot create necessary directories. Integrated go1.20.3 and code4.11.
 
 v0.2.0-alpha: Bug fix: Cannot chown. Integrated go1.20.3 and code4.11. **Not Rcommanded to use.**

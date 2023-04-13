@@ -20,6 +20,14 @@
 
 构建命令：
 
+构建纯净（仅包含vscode）镜像：
+```
+docker build --pull --no-cache \
+--build-arg CODE_RELEASE=`#可选;code_server的版本` 
+-t sydneymrcat/code-server -f pure.Dockerfile .
+```
+
+构建包含go的镜像：
 ```
 docker build --pull --no-cache \
 --build-arg CODE_RELEASE=`#可选;code_server的版本` \
@@ -27,7 +35,28 @@ docker build --pull --no-cache \
 -t sydneymrcat/code-server .
 ```
 
-## 运行
+## 拉取以及运行
+
+拉取完整（拥有编程环境嵌入）镜像执行：
+```
+docker pull sydneymrcat/code-server:latest
+```
+
+拉取轻量（仅仅包含code-server）镜像执行：
+```
+docker pull sydneymrcat/code-server:pure
+```
+
+指定版本拉取，详见版本日志：
+```
+docker pull sydneymrcat/code-server:VERSION
+或
+docker pull sydneymrcat/code-server:pure-VERSION
+
+e.g. docker pull sydneymrcat/code-server:v0.2.1
+```
+
+
 
 首先，请创建一个用于存放code-server应用文件的卷`docker create volume code_app`。升级时，这个卷将被挂载到另一个容器中.
 

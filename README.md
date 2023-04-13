@@ -24,6 +24,14 @@ If you need to build an armv7l image, you need to download the compiled golang d
 
 To build the image：
 
+build vscode-only image：
+```
+docker build --pull --no-cache \
+--build-arg CODE_RELEASE=`#optional;version of code_server` 
+-t sydneymrcat/code-server -f pure.Dockerfile .
+```
+
+Build go-embeded image via:
 ```
 docker build --pull --no-cache \
 --build-arg CODE_RELEASE=`#optional;version of code_server` \
@@ -31,7 +39,29 @@ docker build --pull --no-cache \
 -t sydneymrcat/code-server .
 ```
 
-## Run
+## 拉取以及运行
+
+Pull the full (with programming environment embedded) image:
+```
+docker pull sydneymrcat/code-server:latest
+```
+
+Pull lightweight (contains only code-server) image：
+```
+docker pull sydneymrcat/code-server:pure
+```
+
+Pull the specified version, see version log for details:
+```
+docker pull sydneymrcat/code-server:VERSION
+OR
+docker pull sydneymrcat/code-server:pure-VERSION
+
+e.g. docker pull sydneymrcat/code-server:v0.2.1
+```
+
+
+
 First, please create a volume using `docker create volume code_app` to store the code-server application files. During the upgrade, this volume will be mounted into another container.
 
 You can use either docker-cli or docker-compose to run the container.

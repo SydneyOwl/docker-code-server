@@ -151,4 +151,4 @@ v0.1.x: Not Rcommanded to use.
 
 ### Pure
 
-v0.2.1: Code-Server4.11.
+v0.2.1: Code-Server4.11. Passed Test of updater(https://github.com/SydneyOwl/code-server-updater).

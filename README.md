@@ -9,7 +9,7 @@ This is a modified version of [linux-server](https://github.com/linuxserver/dock
 
 Only amd64/arm64/armv7 are supported; And arm64/armv7 images are not being tested.
 
-This image is designed to be upgradeable (upgrading will not lose the environment already installed in the container). The upgrade tool is experimental. See [code-server-updater](https://github.com/linuxserver/code-server-updater) for more
+This image is designed to be upgradeable (upgrading will not lose the environment already installed in the container). The upgrade tool is experimental. See [code-server-updater](https://github.com/sydneyowl/code-server-updater) for more
 
 This image embeds Golang and go vscode plugins. The Go version is the version at the time of the push. For details, please refer to the [version log](#VersionLog).
 

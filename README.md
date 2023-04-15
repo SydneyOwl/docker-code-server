@@ -137,10 +137,18 @@ GOBIN: `/home/abc/go/bin`
 
 ## VersionLog
 
-v0.2.0: Integrated go1.20.3 and code4.11.
+### Full environment
 
-v0.2.0-beta: Bug fix: Cannot create necessary directories. Integrated go1.20.3 and code4.11.
+v0.2.1: Integrated go1.20.3 and Code-Server4.11. Passed Test of updater(https://github.com/SydneyOwl/code-server-updater).
 
-v0.2.0-alpha: Bug fix: Cannot chown. Integrated go1.20.3 and code4.11. **Not Rcommanded to use.**
+v0.2.0: Integrated go1.20.3 and Code-Server4.11.
+
+v0.2.0-beta: Bug fix: Cannot create necessary directories. Integrated go1.20.3 and Code-Server4.11.
+
+v0.2.0-alpha: Bug fix: Cannot chown. Integrated go1.20.3 and Code-Server4.11. **Not Rcommanded to use.**
 
 v0.1.x: Not Rcommanded to use.
+
+### Pure
+
+v0.2.1: Code-Server4.11.

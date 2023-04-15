@@ -10,7 +10,7 @@ LABEL maintainer="MrOwl"
 ARG DEBIAN_FRONTEND="noninteractive"
 ENV HOME="/config"
 RUN \
-  if [ ${TARGETARCH} == "arm" ];then \
+  if [ ${TARGETARCH} = "arm" ];then \
     TARGETARCH=armv7l; \
   fi && \
   echo "**** install runtime dependencies ****" && \

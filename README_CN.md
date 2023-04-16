@@ -8,7 +8,7 @@
 
 这个镜像被设计为可升级，即升级后不会失去已安装在容器中的环境。升级工具尚在测试中，地址：https://github.com/SydneyOwl/code-server-updater
 
-该镜像内嵌go以及go的vscode插件。golang版本为推送时的版本，详情请查看 [版本日志](#版本日志)
+镜像分为两类。完整镜像内嵌go以及go的vscode插件。golang版本为推送时的版本，轻量镜像只包括code-server。详情请查看 [版本日志](#版本日志)
 
 **警告：armhf 上的 Golang 是通过 `GOROOT_FINAL=/usr/local GOOS=linux GOARCH=arm GOARM=7 GOBIN="/home/abc/go/bin" ./make.bash` 从源代码编译而来，可能不兼容。请参见 .github/scripts/compile_go.sh 获取更多信息！**
 

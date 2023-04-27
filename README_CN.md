@@ -141,6 +141,8 @@ GOBIN: `/home/abc/go/bin`
 
 ### 完整版
 
+v0.2.2: 内嵌 go1.20.3 和 Code-Server4.12.0.
+
 v0.2.1: 内嵌 go1.20.3 和 Code-Server4.11. 通过升级器的测试(https://github.com/SydneyOwl/code-server-updater).
 
 v0.2.0: 内嵌 go1.20.3 以及 Code-Server4.11.
@@ -152,6 +154,8 @@ v0.2.0-alpha: 修复无法更改权限的问题。集成go1.20.3以及Code-Serve
 v0.1.x: 不建议使用 - 测试版本
 
 ### 轻量
+
+v0.2.2: Code-Server4.12.0 .
 
 v0.2.1: Code-Server4.11. 通过升级器的测试(https://github.com/SydneyOwl/code-server-updater).
 

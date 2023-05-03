@@ -139,6 +139,8 @@ GOBIN: `/home/abc/go/bin`
 
 ### Full environment
 
+v0.2.3: Integrated go1.20.4 and Code-Server4.12.0
+
 v0.2.2: Integrated go1.20.3 and Code-Server4.12.0
 
 v0.2.1: Integrated go1.20.3 and Code-Server4.11. Passed Test of updater(https://github.com/SydneyOwl/code-server-updater).
@@ -152,6 +154,8 @@ v0.2.0-alpha: Bug fix: Cannot chown. Integrated go1.20.3 and Code-Server4.11. **
 v0.1.x: Not Rcommanded to use.
 
 ### Pure
+
+v0.2.3: Code-Server4.12.0
 
 v0.2.2: Code-Server4.12.0
 
